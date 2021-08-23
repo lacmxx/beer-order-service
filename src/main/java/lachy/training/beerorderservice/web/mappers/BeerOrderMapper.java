@@ -20,10 +20,12 @@ package lachy.training.beerorderservice.web.mappers;
 import lachy.training.beerorderservice.domain.BeerOrder;
 import lachy.training.beerorderservice.web.model.BeerOrderDto;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 @Mapper(uses = {DateMapper.class, BeerOrderLineMapper.class})
 public interface BeerOrderMapper {
 
+    @Mapping(source = "customer.id", target = "customerId")
     BeerOrderDto beerOrderToDto(BeerOrder beerOrder);
 
     BeerOrder dtoToBeerOrder(BeerOrderDto dto);
